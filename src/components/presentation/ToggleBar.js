@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export default (props) => {
   return (
-    <div style={ style.container }>
+    <div onClick={props.onToggle.bind(this)} style={ style.container }>
       AJAB ToggleBar Chrome Extension
     </div>
   );

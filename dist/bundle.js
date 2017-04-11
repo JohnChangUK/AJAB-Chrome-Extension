@@ -10036,7 +10036,12 @@ var Widget = function (_Component) {
   function Widget() {
     _classCallCheck(this, Widget);
 
-    return _possibleConstructorReturn(this, (Widget.__proto__ || Object.getPrototypeOf(Widget)).call(this));
+    var _this = _possibleConstructorReturn(this, (Widget.__proto__ || Object.getPrototypeOf(Widget)).call(this));
+
+    _this.state = {
+      showComments: false
+    };
+    return _this;
   }
 
   _createClass(Widget, [{
@@ -10053,16 +10058,29 @@ var Widget = function (_Component) {
       event.target.value = '';
     }
   }, {
+    key: 'toggleComments',
+    value: function toggleComments() {
+      console.log(this.state.showComments);
+      this.setState({
+        showComments: !this.state.showComments
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
-      // return (
-      //   <div style={style.comments}>
-      //     <div>
-      //       <input onKeyDown={this.submitComment.bind(this)} type="text" placeholder="Enter Comment" />
-      //     </div>
-      //   </div>
-      // )
-      return _react2.default.createElement(_presentation.ToggleBar, null);
+      if (this.state.showComments == true) {
+        return _react2.default.createElement(
+          'div',
+          { style: style.comments },
+          _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement('input', { onKeyDown: this.submitComment.bind(this), style: style.input, type: 'text', placeholder: 'Enter Comment' })
+          ),
+          _react2.default.createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) })
+        );
+      }
+      return _react2.default.createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) });
     }
   }]);
 
@@ -10078,6 +10096,12 @@ var style = {
     bottom: 0,
     right: 0,
     background: '#f1f9f5'
+  },
+  input: {
+    width: 100 + '%',
+    height: 32,
+    border: 'none',
+    padding: 6
   }
 };
 
@@ -10103,7 +10127,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = function (props) {
   return _react2.default.createElement(
     'div',
-    { style: style.container },
+    { onClick: props.onToggle.bind(undefined), style: style.container },
     'AJAB ToggleBar Chrome Extension'
   );
 };
