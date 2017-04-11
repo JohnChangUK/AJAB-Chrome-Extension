@@ -1,15 +1,43 @@
 import React, {Component} from 'react';
 import {Comment, ToggleBar} from '../presentation';
+import firebase from 'firebase';
 
 class Widget extends Component {
   constructor() {
     super();
     this.state = {
       showComments: false,
-      commentsArray: []
+      commentsArray: [],
+      firebase: null
     }
   }
 
+  componentDidMount() {
+    const fbApp = firebase.initializeApp({
+      apiKey: "AIzaSyAVs1tote0KLaOt5CBLpGqGY3MGnrb8dqQ",
+      authDomain: "chat-app-7fc5f.firebaseapp.com",
+      databaseURL: "https://chat-app-7fc5f.firebaseio.com",
+      projectId: "chat-app-7fc5f",
+      storageBucket: "chat-app-7fc5f.appspot.com",
+      messagingSenderId: "464213058821"
+    });
+
+    this.setState({
+      firebase: fbApp
+    });
+
+
+    fbApp.database().ref('/comments').on('value', (chatapp) => {
+      if (chatapp == null)
+        return;
+
+      const data = chatapp.val();
+      console.log("Comments Updated: " + JSON.stringify(data));
+      this.setState({
+        commentsArray: data.reverse()
+    });
+    });
+}
 
 submitComment(event){
   if(event.keyCode != 13)
@@ -27,11 +55,7 @@ submitComment(event){
   let comments = Object.assign([], this.state.commentsArray)
   event.target.value = '';
 
-  comments.unshift(comment);
-
-  this.setState({
-    commentsArray : comments
-  });
+this.state.firebase.database().ref('/comments/' + comments.length).set(comment);
 
 }
 
