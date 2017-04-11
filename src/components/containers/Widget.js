@@ -11,17 +11,18 @@ class Widget extends Component {
 
 
 submitComment(event){
-  if(event.keyCode != 13)
-      return;
-
-
-  console.log(`submitComment: ${event.target.value}`);
-
-  const comment = {
-    text: event.target.value,
-    timestamp: Date.now()
-  }
-  event.target.value = '';
+  alert("ALERT");
+  // if(event.keyCode != 13)
+  //     return;
+  //
+  //
+  // console.log(`submitComment: ${event.target.value}`);
+  //
+  // const comment = {
+  //   text: event.target.value,
+  //   timestamp: Date.now()
+  // }
+  // event.target.value = '';
 }
 
 toggleComments() {

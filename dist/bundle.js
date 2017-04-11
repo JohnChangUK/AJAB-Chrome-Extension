@@ -10047,15 +10047,18 @@ var Widget = function (_Component) {
   _createClass(Widget, [{
     key: 'submitComment',
     value: function submitComment(event) {
-      if (event.keyCode != 13) return;
-
-      console.log('submitComment: ' + event.target.value);
-
-      var comment = {
-        text: event.target.value,
-        timestamp: Date.now()
-      };
-      event.target.value = '';
+      alert("ALERT");
+      // if(event.keyCode != 13)
+      //     return;
+      //
+      //
+      // console.log(`submitComment: ${event.target.value}`);
+      //
+      // const comment = {
+      //   text: event.target.value,
+      //   timestamp: Date.now()
+      // }
+      // event.target.value = '';
     }
   }, {
     key: 'toggleComments',
