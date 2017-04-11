@@ -1,28 +1,38 @@
 import React, {Component} from 'react';
-import {ToggleBar} from '../presentation';
+import {Comment, ToggleBar} from '../presentation';
 
 class Widget extends Component {
   constructor() {
     super();
     this.state = {
-      showComments: false
+      showComments: false,
+      commentsArray: []
     }
   }
 
 
 submitComment(event){
-  alert("ALERT");
-  // if(event.keyCode != 13)
-  //     return;
-  //
-  //
-  // console.log(`submitComment: ${event.target.value}`);
-  //
-  // const comment = {
-  //   text: event.target.value,
-  //   timestamp: Date.now()
-  // }
-  // event.target.value = '';
+  if(event.keyCode != 13)
+      return;
+
+
+  console.log(`submitComment: ${event.target.value}`);
+
+  const comment = {
+    text: event.target.value,
+    timestamp: Date.now()
+  }
+  console.log(comment)
+
+  let comments = Object.assign([], this.state.commentsArray)
+  event.target.value = '';
+
+  comments.unshift(comment);
+
+  this.setState({
+    commentsArray : comments
+  });
+
 }
 
 toggleComments() {
@@ -39,6 +49,12 @@ render(){
         <div>
           <input onKeyDown={this.submitComment.bind(this)} style={style.input} type="text" placeholder="Enter Comment" />
         </div>
+        {
+          this.state.commentsArray.map((comment, index) => {
+            return <Comment key={comment.timestamp}{...comment}/>
+          })
+        }
+
         <ToggleBar onToggle={this.toggleComments.bind(this)}/>
       </div>
     )}

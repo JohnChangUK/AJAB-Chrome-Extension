@@ -9989,9 +9989,9 @@ var _widget = __webpack_require__(83);
 
 var _widget2 = _interopRequireDefault(_widget);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-exports.Widget = _widget2.default;
+exports.Widget = _widget2['default'];
 
 /***/ }),
 /* 82 */
@@ -10014,6 +10014,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(32);
@@ -10022,7 +10024,7 @@ var _react2 = _interopRequireDefault(_react);
 
 var _presentation = __webpack_require__(85);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -10039,52 +10041,74 @@ var Widget = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Widget.__proto__ || Object.getPrototypeOf(Widget)).call(this));
 
     _this.state = {
-      showComments: false
+      showComments: false,
+      commentsArray: []
     };
     return _this;
   }
 
   _createClass(Widget, [{
     key: 'submitComment',
-    value: function submitComment(event) {
-      alert("ALERT");
-      // if(event.keyCode != 13)
-      //     return;
-      //
-      //
-      // console.log(`submitComment: ${event.target.value}`);
-      //
-      // const comment = {
-      //   text: event.target.value,
-      //   timestamp: Date.now()
-      // }
-      // event.target.value = '';
-    }
+    value: function () {
+      function submitComment(event) {
+        if (event.keyCode != 13) return;
+
+        console.log('submitComment: ' + event.target.value);
+
+        var comment = {
+          text: event.target.value,
+          timestamp: Date.now()
+        };
+        console.log(comment);
+
+        var comments = Object.assign([], this.state.commentsArray);
+        event.target.value = '';
+
+        comments.unshift(comment);
+
+        this.setState({
+          commentsArray: comments
+        });
+      }
+
+      return submitComment;
+    }()
   }, {
     key: 'toggleComments',
-    value: function toggleComments() {
-      console.log(this.state.showComments);
-      this.setState({
-        showComments: !this.state.showComments
-      });
-    }
+    value: function () {
+      function toggleComments() {
+        console.log(this.state.showComments);
+        this.setState({
+          showComments: !this.state.showComments
+        });
+      }
+
+      return toggleComments;
+    }()
   }, {
     key: 'render',
-    value: function render() {
-      if (this.state.showComments == true) {
-        return _react2.default.createElement(
-          'div',
-          { style: style.comments },
-          _react2.default.createElement(
+    value: function () {
+      function render() {
+        if (this.state.showComments == true) {
+          return _react2['default'].createElement(
             'div',
-            null,
-            _react2.default.createElement('input', { onKeyDown: this.submitComment.bind(this), style: style.input, type: 'text', placeholder: 'Enter Comment' })
-          ),
-          _react2.default.createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) })
-        );
+            { style: style.comments },
+            _react2['default'].createElement(
+              'div',
+              null,
+              _react2['default'].createElement('input', { onKeyDown: this.submitComment.bind(this), style: style.input, type: 'text', placeholder: 'Enter Comment' })
+            ),
+            this.state.commentsArray.map(function (comment, index) {
+              return _react2['default'].createElement(_presentation.Comment, _extends({ key: comment.timestamp }, comment));
+            }),
+            _react2['default'].createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) })
+          );
+        }
+        return _react2['default'].createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) });
       }
-      return _react2.default.createElement(_presentation.ToggleBar, { onToggle: this.toggleComments.bind(this) });
-    }
+
+      return render;
+    }()
   }]);
 
   return Widget;
@@ -10108,7 +10132,7 @@ var style = {
   }
 };
 
-exports.default = Widget;
+exports['default'] = Widget;
 
 /***/ }),
 /* 84 */
@@ -10125,10 +10149,10 @@ var _react = __webpack_require__(32);
 
 var _react2 = _interopRequireDefault(_react);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-exports.default = function (props) {
-  return _react2.default.createElement(
+exports['default'] = function (props) {
+  return _react2['default'].createElement(
     'div',
     { onClick: props.onToggle.bind(undefined), style: style.container },
     'AJAB ToggleBar Chrome Extension'
@@ -10157,15 +10181,20 @@ var style = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ToggleBar = undefined;
+exports.Comment = exports.ToggleBar = undefined;
 
 var _ToggleBar = __webpack_require__(84);
 
 var _ToggleBar2 = _interopRequireDefault(_ToggleBar);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _Comment = __webpack_require__(185);
 
-exports.ToggleBar = _ToggleBar2.default;
+var _Comment2 = _interopRequireDefault(_Comment);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports.ToggleBar = _ToggleBar2['default'];
+exports.Comment = _Comment2['default'];
 
 /***/ }),
 /* 86 */
@@ -10184,16 +10213,16 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _containers = __webpack_require__(81);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var app = _react2.default.createElement(
+var app = _react2['default'].createElement(
   'div',
   null,
-  _react2.default.createElement(_containers.Widget, null),
+  _react2['default'].createElement(_containers.Widget, null),
   ' '
 );
 
-_reactDom2.default.render(app, document.getElementById('root'));
+_reactDom2['default'].render(app, document.getElementById('root'));
 
 /***/ }),
 /* 87 */
@@ -22161,6 +22190,35 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(32);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+exports['default'] = function (props) {
+
+  var comment = props;
+
+  return _react2['default'].createElement(
+    'div',
+    { style: { padding: 12, borderBottom: '1px dotted #ddd' } },
+    comment.text,
+    console.log('inside comment: ' + comment.text)
+  );
+};
 
 /***/ })
 /******/ ]);
