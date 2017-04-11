@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "AJAB",
+  "version": "1.0.0",
+  "description": "Gets information from Google.",
+  "icons": { "128": "icon.png" },
+  "browser_action": {
+    "default_title": "",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["./dist/bundle.js"]
+  }
+}
