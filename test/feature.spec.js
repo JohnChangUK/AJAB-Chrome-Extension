@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-addons-test-utils';
+import TestUtils from 'react-addons-test-utils';
+import { createRenderer } from 'react-addons-test-utils'
+import { assert } from 'chai';
 import Widget from '../src/components/containers/Widget';
 
 it("render", () => {
-  var widget = ReactTestUtils.renderIntoDocument (
+  var widget = TestUtils.renderIntoDocument (
   <Widget />
   );
-  var div = ReactTestUtils.findRenderedDOMComponentWithTag(
+  var div = TestUtils.findRenderedDOMComponentWithTag(
     widget, 'div'
     );
     console.log(div);
   }
 )
+

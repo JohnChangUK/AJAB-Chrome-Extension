@@ -2,6 +2,7 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {expect} from 'chai';
 import Comment from '../src/components/presentation/Comment.js';
+
  describe('(Component) Comment', () => {
    let _wrapper
 

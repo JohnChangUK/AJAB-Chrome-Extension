@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "assert": "^1.4.1",
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
     "babel-preset-airbnb": "^2.2.3",
@@ -19,6 +20,7 @@
     "chai": "^3.5.0",
     "enzyme": "^2.8.0",
     "firebase": "^3.7.5",
+    "js-base64": "^2.1.9",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "webpack": "^2.3.3"

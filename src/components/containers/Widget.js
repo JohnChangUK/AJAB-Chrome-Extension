@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Comment, ToggleBar} from '../presentation';
 import firebase from 'firebase';
+import { Base64 } from 'js-base64';
 
 class Widget extends Component {
   constructor() {
@@ -26,8 +27,9 @@ class Widget extends Component {
       firebase: fbApp
     });
 
+    const path = Base64.encode(window.location.href)+'/comments';
 
-    fbApp.database().ref('/comments').on('value', (chatapp) => {
+    fbApp.database().ref(path).on('value', (chatapp) => {
       if (chatapp == null)
         return;
 
@@ -53,9 +55,12 @@ submitComment(event){
   // console.log(comment)
 
   let comments = Object.assign([], this.state.commentsArray)
-  event.target.value = '';
 
-this.state.firebase.database().ref('/comments/' + comments.length).set(comment);
+  const path = Base64.encode(window.location.href)+'/comments/' + comments.length;
+
+  this.state.firebase.database().ref(path).set(comment);
+
+  event.target.value = '';
 
 }
 
