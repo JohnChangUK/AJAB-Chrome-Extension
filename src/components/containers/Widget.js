@@ -10,7 +10,7 @@ class Widget extends Component {
       showComments: false,
       commentsArray: [],
       firebase: null
-    }
+    };
   }
 
   componentDidMount() {
@@ -34,7 +34,6 @@ class Widget extends Component {
         return;
 
       const data = chatapp.val();
-      // console.log("Comments Updated: " + JSON.stringify(data));
       this.setState({
         commentsArray: data.reverse()
     });
@@ -45,16 +44,12 @@ submitComment(event){
   if(event.keyCode != 13)
       return;
 
-
-  // console.log(`submitComment: ${event.target.value}`);
-
   const comment = {
     text: event.target.value,
     timestamp: Date.now()
-  }
-  // console.log(comment)
+  };
 
-  let comments = Object.assign([], this.state.commentsArray)
+  let comments = Object.assign([], this.state.commentsArray);
 
   const path = Base64.encode(window.location.href)+'/comments/' + comments.length;
 
@@ -65,7 +60,6 @@ submitComment(event){
 }
 
 toggleComments() {
-  console.log(this.state.showComments)
   this.setState({
     showComments: !this.state.showComments
   });
@@ -101,7 +95,8 @@ const style = {
     position: 'fixed',
     bottom: 0,
     right: 0,
-    background: '#f1f9f5'
+    background: '#f1f9f5',
+    overFlowY: 'scroll'
   },
   input: {
     width: 100+'%',
@@ -110,6 +105,5 @@ const style = {
     padding: 6
   }
 }
-
 
 export default Widget;

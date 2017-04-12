@@ -21,8 +21,11 @@
     "enzyme": "^2.8.0",
     "firebase": "^3.7.5",
     "js-base64": "^2.1.9",
+    "moment": "^2.18.1",
+    "moment-timezone": "^0.5.13",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
+    "react-moment": "^0.2.2",
     "webpack": "^2.3.3"
   },
   "devDependencies": {
