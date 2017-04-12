@@ -1,26 +1,48 @@
 import React from 'react';
-// import { mount, shallow, render } from 'enzyme';
-// import {expect} from 'chai';
-
-import {Widget} from '../src/components/containers/Widget';
+import { shallow } from 'enzyme';
+import {expect} from 'chai';
+import ToggleBar from '../src/components/presentation/ToggleBar';
+import Widget from '../src/components/containers/Widget';
 
 describe('<Widget/>', function () {
-  // console.log("ASDSA");
-  // it('should have a class named widget', function () {
-  //   const wrapper = shallow(<Widget/>);
-  //   console.log(wrapper)
-  //   expect(wrapper).to.not.be.undefined;
-  // });
-  //
-  // it('expects <Widget /> to respond to render', function () {
-  //   const wrapper = shallow(<Widget/>);
-  //   expect(wrapper).to.respondTo('render');
-  // });
 
+  let _wrapper
 
-//   it('should have props for email and src', function () {
-//     const wrapper = shallow(<Avatar/>);
-//     expect(wrapper.props().email).to.be.defined;
-//     expect(wrapper.props().src).to.be.defined;
-//   });
+  describe('<Widget/> with showComments as true', function () {
+
+    beforeEach(() => {
+     _wrapper = shallow(<Widget />)
+     _wrapper.setState({
+       showComments: true
+     })
+    })
+
+    it('has three child elements' , () => {
+      expect(_wrapper.node.props.children).to.have.length(3)
+    })
+
+    it('has div as first child element' , () => {
+      expect(_wrapper.node.props.children[0].type).to.be.equal('div')
+    })
+
+    it('has array as second child element' , () => {
+      expect(_wrapper.node.props.children[1]).to.be.instanceof(Array)
+    })
+
+    it('has function as third child element' , () => {
+      expect(_wrapper.node.props.children[2].type).to.be.a('function')
+    })
+
+  })
+
+  describe('<Widget/> with showComments as false', function () {
+
+    beforeEach(() => {
+     _wrapper = shallow(<Widget />)
+    })
+
+    it('renders just the togglebar' , () => {
+      expect(_wrapper.node.type).to.be.a('function')
+    })
+  })
 });
