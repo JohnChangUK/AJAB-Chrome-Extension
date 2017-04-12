@@ -32,7 +32,7 @@ class Widget extends Component {
         return;
 
       const data = chatapp.val();
-      console.log("Comments Updated: " + JSON.stringify(data));
+      // console.log("Comments Updated: " + JSON.stringify(data));
       this.setState({
         commentsArray: data.reverse()
     });
@@ -44,13 +44,13 @@ submitComment(event){
       return;
 
 
-  console.log(`submitComment: ${event.target.value}`);
+  // console.log(`submitComment: ${event.target.value}`);
 
   const comment = {
     text: event.target.value,
     timestamp: Date.now()
   }
-  console.log(comment)
+  // console.log(comment)
 
   let comments = Object.assign([], this.state.commentsArray)
   event.target.value = '';
