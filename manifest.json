@@ -2,14 +2,21 @@
   "manifest_version": 2,
   "name": "AJAB",
   "version": "1.0.0",
-  "description": "Gets information from Google.",
+  "description": "Chat with people on the same tab.",
   "icons": { "128": "icon.png" },
+
   "browser_action": {
     "default_title": "",
     "default_icon": "icon.png"
   },
+
+  "permissions":[
+    "tabs",
+    "activeTab"
+  ],
+
   "background": {
     "persistent": false,
-    "scripts": ["./dist/bundle.js"]
+    "scripts": ["./content.js","./dist/bundle.js"]
   }
 }
