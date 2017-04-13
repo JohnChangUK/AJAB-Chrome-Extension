@@ -88,15 +88,17 @@ render(){
 
 }
 const style = {
-  comments: {
+ comments: {
     zIndex: 100,
     height: 650,
-    width: 320,
-    position: 'fixed',
-    bottom: 0,
-    right: 0,
+    width: 320, 
+    position: 'fixed', 
+    bottom: 0, 
+    right: 0, 
     background: '#f1f9f5',
-    overFlowY: 'scroll'
+    borderLeft: '1px solid #ddd',
+    overflowY: 'scroll',
+    paddingBottom: 96
   },
   input: {
     width: 100+'%',
