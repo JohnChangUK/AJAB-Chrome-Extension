@@ -11,7 +11,6 @@ import Comment from '../src/components/presentation/Comment.js';
     let comment = {text: 'this is a comment'}
     // console.log(shallow(<Comment {...comment} />))
     _wrapper = shallow(<Comment {...comment}/>)
-    // console.log(_wrapper.context)
    })
 
    it('has a div element', () => {
@@ -24,7 +23,7 @@ import Comment from '../src/components/presentation/Comment.js';
    })
 
    it('renders the comments text', () => {
-     console.log(_wrapper.node.props.children)
-     expect(_wrapper.node.props.children[0]).to.equal('this is a comment')
+     expect(_wrapper.node.props.children[3]).to.equal('this is a comment')
    })
+
  })
