@@ -34,10 +34,6 @@ A Google Chrome extension which allows people to on any website to connect and c
 
 ![alt tag](https://github.com/JohnChangUK/AJAB-Chrome-Extension/blob/master/Screen%20Shot%202017-04-15%20at%2022.59.42.png)
 
-
-![alt_tag](https://github.com/JohnChangUK/AJAB-Chrome-Extension/blob/master/Screen%20Shot%202017-04-15%20at%2023.00.01.png)
-
-
 # Data being stored on the Firebase Database
 
 ![alt_tag](https://github.com/JohnChangUK/AJAB-Chrome-Extension/blob/master/Screen%20Shot%202017-04-15%20at%2022.58.32.png)
