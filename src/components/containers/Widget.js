@@ -14,13 +14,7 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-    const fbApp = firebase.initializeApp({
-      apiKey: "AIzaSyAVs1tote0KLaOt5CBLpGqGY3MGnrb8dqQ",
-      authDomain: "chat-app-7fc5f.firebaseapp.com",
-      databaseURL: "https://chat-app-7fc5f.firebaseio.com",
-      projectId: "chat-app-7fc5f",
-      storageBucket: "chat-app-7fc5f.appspot.com",
-      messagingSenderId: "464213058821"
+  
     });
 
     this.setState({
