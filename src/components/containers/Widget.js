@@ -14,7 +14,13 @@ class Widget extends Component {
   }
 
   componentDidMount() {
-  
+      const fbApp = firebase.initializeApp({
+      apiKey: 
+      authDomain: 
+      databaseURL: 
+      projectId: 
+      storageBucket: 
+      messagingSenderId: 
     });
 
     this.setState({
