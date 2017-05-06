@@ -1,11 +1,12 @@
 ## Google Chrome Chat Extension
 
-A Google Chrome extension which allows people to on any website to connect and chat amongst each other.
+A Google Chrome extension which allows people to on any website to connect and chat amongst each other. This works on any website and can be used by simply clicking on the togglebar and opening the chat.
 
 ## Technologies Used
-- React: open-source JavaScript library for UI
-- Babel: Transpiler which converts ES6 to ES5
-- Firebase: Cloud Storage Database - Google
+- React.js: A declarative, efficient, and flexible JavaScript library for building user interfaces. 
+- Node.js: A server-side platform built on Google Chrome's JavaScript Engine (V8 Engine).
+- Firebase: Cloud Storage Database - Google, Used as a mobile and web application development platform
+- Babel: Transpiler which transpiles ECMAScript 6 to ECMAScript 5, to support browsers that to not support ES6
 - Testing: Chai, Mocha, Enzyme, React-Test-Utilities
 - Created a Google Chrome Extension
 
@@ -14,7 +15,7 @@ A Google Chrome extension which allows people to on any website to connect and c
 ```
 As a User,
 So that I can ask for help,
-I want to be able to people on the same website.
+I want to be able to talk to people on the same website.
 ```
 ```
 As a User,
@@ -28,7 +29,7 @@ I want to have a simple User Interface.
 ```
 ```
 As a User,
-So that I can open a chat
+So that I can open a chat,
 I want to the extension to have a togglebar.
 ```
 
